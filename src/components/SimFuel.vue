@@ -98,17 +98,17 @@ function CalcolaBenzina() {
     <input type="number" v-model="raceTimeHours" placeholder="hh" class="input input-bordered input-primary w-full  m-0" />
     </div>
 
-    <div class="basis-1/2 mr-auto">
-    <input type="number" v-model="raceTimeMinutes" placeholder="mm" class="input input-bordered input-primary w-full max-w-xs" />
+    <div class="basis-1/2 w-full">
+    <input type="number" v-model="raceTimeMinutes" placeholder="mm" class="input input-bordered input-primary w-full m-0" />
     </div>
     
 </div>
 
    
-<span class="label label-text mt-5  md:w-2/5 mx-auto">Inserisciil consumo di carburante per giro</span>
+<span class="label label-text mt-5  md:w-2/5 mx-auto">Inserisci il consumo di carburante per giro</span>
     <div class="w-full md:w-2/5 mx-auto ">
     <label class="input input-bordered  input-primary flex items-center gap-2">
-        <input v-model="consumoCarburante"  type="text" class="grow" placeholder="L"/>
+        <input v-model="consumoCarburante"  type="number" class="grow" placeholder="L"/>
         <!-- <kbd @click="addProductFromIcon(productInput)" class="kbd kbd-sm">Enter</kbd> -->
     </label>
     </div>
@@ -116,7 +116,10 @@ function CalcolaBenzina() {
     <div class="w-full md:w-2/5 mx-auto mt-10">
         <h1 @click="CalcolaBenzina" class="btn btn-secondary mb-2">Calcola carburante da inserire</h1>
     <label class="input input-bordered flex items-center gap-2">
-        <input v-model="iniettaCarburante"  type="text" class="grow" placeholder="L"/>
+      
+        <span class="grow">
+            {{ iniettaCarburante }} L
+        </span>
         <!-- <kbd @click="addProductFromIcon(productInput)" class="kbd kbd-sm">Enter</kbd> -->
     </label>
     </div>
