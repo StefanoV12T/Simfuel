@@ -114,7 +114,7 @@ function CalcolaBenzina() {
     </div>
 
     <div class="w-full md:w-2/5 mx-auto mt-10">
-        <h1 @click="CalcolaBenzina" class="btn btn-secondary mb-2">Calcola carburante da inserire</h1>
+        <h1 @click="CalcolaBenzina" class="btn btn-secondary mb-2">Calcola carburante da imbarcare</h1>
     <label class="input input-bordered flex items-center gap-2">
       
         <span class="grow">
