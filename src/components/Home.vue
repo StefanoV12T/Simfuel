@@ -14,7 +14,7 @@ const emit = defineEmits(['changeTab']);
     <div class="hero">
   <div class="hero-content flex-col lg:flex-row">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
+      src="../images/fuel.png"
       class="max-w-sm mask mask-squircle rounded-lg shadow-2xl" />
     <div>
       <h1 class="text-5xl font-bold">SimFuel</h1>
@@ -22,7 +22,7 @@ const emit = defineEmits(['changeTab']);
         Questa è un'app che ti permette di imbarcare il quantitativo giusto di benzina nel serbatoio, in base alle tue esigenze!
       </p>
       <!-- qui richiamo la funzione da passare al componente padre e il valore che cambia -->
-      <button class="btn btn-accent " @click="emit('changeTab', 2);">Accedi alla Lista</button>
+      <button class="btn btn-secondary" @click="emit('changeTab', 2);">Accedi al calcolatore</button>
     </div>
   </div>
 </div>
