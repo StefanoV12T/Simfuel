@@ -46,7 +46,7 @@ function CalcolaBenzina() {
         return error.value = 1;
     }
 
-    iniettaCarburante.value = Math.floor((((raceTime.value) / lapTime.value)) * consumoCarburante.value) + 2;
+    iniettaCarburante.value = Math.floor((((raceTime.value) / lapTime.value)+1) * consumoCarburante.value) + 2;
     iniettaCarburanteSafe.value = iniettaCarburante.value +3;
     iniettaCarburanteLapPlus.value =  Math.floor(iniettaCarburante.value + consumoCarburante.value)+1;
 }
