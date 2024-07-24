@@ -14,13 +14,11 @@ let raceTimeMinutes = ref('');
 let raceTime = ref('');
 
 let consumoCarburante=ref('');
-let iniettaCarburante=ref(0);
+let iniettaCarburante = ref(0);
+let iniettaCarburanteSafe = ref(0);
+let iniettaCarburanteLapPlus = ref(0);
 let error = ref(0);
 
-
-function cacca(num) {
-    console.log(num);
-}
 
 function CalcolaBenzina() {
     if(lapTimeSeconds.value=='') {
@@ -28,7 +26,6 @@ function CalcolaBenzina() {
     };
     if (lapTimeMinutes.value=='') {
         lapTimeMinutes.value = 0; 
-        console.log('maledetto bastardo');
     };
     if (lapTimeMilliseconds.value =='') {
         lapTimeMilliseconds.value = 0; 
@@ -39,19 +36,32 @@ function CalcolaBenzina() {
     if (raceTimeMinutes.value == '') {
         raceTimeMinutes.value = 0; 
     };
-    console.log(typeof parseInt(lapTimeMilliseconds.value));
+    
     lapTime.value =(parseInt(lapTimeMinutes.value) * 60000) +( parseInt(lapTimeSeconds.value) * 1000) + parseInt(lapTimeMilliseconds.value);
-    console.log('il tempo è di '+ lapTime.value);
+    
     raceTime.value = parseInt(raceTimeHours.value * 3600000) + parseInt(raceTimeMinutes.value * 60000);
-    console.log(raceTime.value);
+    
     error.value = 0;
     if (raceTime.value <= 0 || lapTime.value <= 0 || consumoCarburante.value <= 0) {
-        console.log(error);
         return error.value = 1;
     }
-    iniettaCarburante.value =((raceTime.value) / lapTime.value) * consumoCarburante.value;
+
+    iniettaCarburante.value = Math.floor((((raceTime.value) / lapTime.value)) * consumoCarburante.value) + 2;
+    iniettaCarburanteSafe.value = iniettaCarburante.value +3;
+    iniettaCarburanteLapPlus.value =  Math.floor(iniettaCarburante.value + consumoCarburante.value)+1;
 }
 
+function ResettaDati(){
+    lapTimeSeconds.value = '';
+    lapTimeMinutes.value = '';
+    lapTimeMilliseconds.value = '';
+    raceTimeHours.value = '';
+    raceTimeMinutes.value = '';
+    iniettaCarburante.value = 0;
+    iniettaCarburanteSafe.value = 0;
+    iniettaCarburanteLapPlus.value = 0;
+    consumoCarburante.value = '';
+}
 
 </script>
 
@@ -74,18 +84,18 @@ function CalcolaBenzina() {
   <!-- Dati del giro -->
 <span class="label label-text  md:w-2/5 mx-auto">Inserisci qui il tuo tempo sul giro</span>
 
-<div class="flex flex-row md:w-2/5 mx-auto">
+<div class="flex flex-row mx-auto md:w-2/5 w-full">
       
     <div class="basis-1/3 mr-2">
-    <input type="number" v-model="lapTimeMinutes" placeholder="mm" class="input input-bordered input-primary w-full max-w-xs" />
+    <input type="number" v-model="lapTimeMinutes" placeholder="mm" class="input input-bordered input-primary w-full m-0" />
     </div>
 
     <div class="basis-1/3 mr-2">
-    <input type="number"  v-model="lapTimeSeconds" placeholder="ss" class="input input-bordered input-primary w-full max-w-xs" />
+    <input type="number"  v-model="lapTimeSeconds" placeholder="ss" class="input input-bordered input-primary w-full m-0" />
     </div>
 
-    <div class="basis-1/3">
-    <input type="number" placeholder="ms" v-model="lapTimeMilliseconds" class="input input-bordered input-primary w-full max-w-xs" />
+    <div class="basis-1/3 ">
+    <input type="number" placeholder="ms" v-model="lapTimeMilliseconds" class="input input-bordered input-primary w-full m-0" />
     </div>
     
 </div>
@@ -113,18 +123,62 @@ function CalcolaBenzina() {
     </label>
     </div>
 
-    <div class="w-full md:w-2/5 mx-auto mt-10">
-        <h1 @click="CalcolaBenzina" class="btn btn-secondary mb-2">Calcola carburante da imbarcare</h1>
-    <label class="input input-bordered flex items-center gap-2">
-      
-        <span class="grow">
-            {{ iniettaCarburante }} L
-        </span>
-        <!-- <kbd @click="addProductFromIcon(productInput)" class="kbd kbd-sm">Enter</kbd> -->
-    </label>
+    <!-- <div class="w-full md:w-2/5 mx-auto mt-10 flex flex-row"> -->
+    <div class="flex flex-row mx-auto md:w-2/5 w-full mt-10">
+
+        <span @click="CalcolaBenzina" class="basis-1/3 mx-auto btn-secondary btn w-full">Calcola carburante da imbarcare</span>
+        <span @click="ResettaDati" class="basis-1/3 btn-secondary mx-auto btn w-full">Resetta dati</span>
     </div>
 
- 
+
+
+    <div class="flex flex-row mx-auto md:w-2/5 w-full">
+      
+      <div class="basis-1/3 mr-2">
+        <span class="label label-text md:w-2/5 mx-auto">Carburante minimo</span>
+        
+        <span class="label label-text md:w-2/5 mx-auto">
+            <label class="input input-bordered flex items-center gap-2">
+          
+                <span class="grow">
+                    {{ iniettaCarburante }} L
+                </span>
+         
+            </label>
+        </span>
+      </div>
+  
+      <div class="basis-1/3 mr-2">
+        <span class="label label-text md:w-2/5 mx-auto">Carburante sicuro</span>
+        
+        <span class="label label-text md:w-2/5 mx-auto">
+            <label class="input input-bordered flex items-center gap-2">
+          
+                <span class="grow">
+                    {{ iniettaCarburanteSafe }} L
+                </span>
+         
+            </label>
+        </span>
+      </div>
+  
+      <div class="basis-1/3 ">
+        <span class="label label-text md:w-2/5 mx-auto">Carburante minimo con giro di lancio </span>
+        
+        <span class="label label-text md:w-2/5 mx-auto">
+            <label class="input input-bordered flex items-center gap-2">
+          
+                <span class="grow">
+                    {{ iniettaCarburanteLapPlus }} L
+                </span>
+         
+            </label>
+        </span>
+      </div>
+      
+  </div>
+
+
 
 
 
