@@ -116,7 +116,7 @@ function ResettaDati(){
       
     <div class="basis-1/2 w-full mr-2">
         <label class="input input-bordered  input-primary flex items-center gap-2">
-            h <input type="number" v-model="raceTimeHours" placeholder="hh" class="m-0" />
+            h <input type="number" v-model="raceTimeHours" placeholder="hh" class="m-0 w-full" />
         </label>
     </div>
 
@@ -124,7 +124,7 @@ function ResettaDati(){
 
     <div class="basis-1/2 w-full">
         <label class="input input-bordered  input-primary flex items-center gap-2">
-            m <input type="number" v-model="raceTimeMinutes" placeholder="mm" class="m-0" />
+            m <input type="number" v-model="raceTimeMinutes" placeholder="mm" class="m-0 w-full" />
         </label>
     </div>
     
@@ -141,7 +141,7 @@ function ResettaDati(){
 
     <div class="flex flex-row mx-auto md:w-2/5 w-full mt-10">
 
-        <span @click="CalcolaBenzina" class="basis-1/3 mx-auto btn-secondary btn w-full">Calcola carburante da imbarcare</span>
+        <span @click="CalcolaBenzina" class="basis-1/3 mx-auto btn-primary btn w-full">Calcola carburante</span>
         <span @click="ResettaDati" class="basis-1/3 btn-secondary mx-auto btn w-full">Resetta dati</span>
     </div>
 
@@ -149,7 +149,7 @@ function ResettaDati(){
 
     <div class="flex flex-row mx-auto md:w-2/5 w-full ">
       
-      <div class="basis-1/3 mr-2 flex items-center ml-5">
+      <div class="basis-1/3 mr-2 flex items-center ml-2 ">
         <span class="label label-text md:w-2/5 ">Carburante minimo</span>
         
         <span class="label label-text md:w-3/5 ">
@@ -178,7 +178,7 @@ function ResettaDati(){
       </div>
   
       <div class="basis-1/3 flex items-center">
-        <span class="label label-text md:w-2/5">Con giro di lancio </span>
+        <span class="label label-text md:w-2/5">Con giro lanciato</span>
         
         <span class="label label-text md:w-3/5">
             <label class="input input-bordered flex items-center gap-2">
