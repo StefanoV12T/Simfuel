@@ -82,7 +82,7 @@ function ResettaDati(){
     </div>
 
   <!-- Dati del giro -->
-<span class="label label-text  md:w-2/5 mx-auto">Tempo sul giro</span>
+<span class="label label-text pt-0 md:w-2/5 mx-auto">Tempo sul giro</span>
 
 <div class="flex flex-row mx-auto md:w-2/5 w-full">
       
