@@ -60,7 +60,7 @@ const setTheme = (theme) => {
   <div :class="currentTheme">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn m-1">
-        Theme
+        Tema
         <svg
           width="12px"
           height="12px"
@@ -87,7 +87,7 @@ const setTheme = (theme) => {
   </div>
   <!-- contenuto -->
   <div class="w-full">
-    <div class="flex justify-center p-5">
+    <div class="flex justify-center pb-3">
       <h1 class="text-5xl font-bold underline">SimFuel</h1>            
     </div>
   </div>

@@ -46,7 +46,7 @@ function CalcolaBenzina() {
         return error.value = 1;
     }
 
-    iniettaCarburante.value = Math.floor((((raceTime.value) / lapTime.value)+1) * consumoCarburante.value) + 2;
+    iniettaCarburante.value = Math.floor((((raceTime.value) / lapTime.value)+1) * consumoCarburante.value) + 1;
     iniettaCarburanteSafe.value = iniettaCarburante.value +3;
     iniettaCarburanteLapPlus.value =  Math.floor(iniettaCarburante.value + consumoCarburante.value)+1;
 }
@@ -88,7 +88,7 @@ function ResettaDati(){
       
     <div class="basis-1/3 mr-2">
         <label class="input input-bordered input-primary flex gap-2 items-center">
-            mm <input type="number" v-model="lapTimeMinutes" placeholder="mm" class="w-full m-0" />
+            min <input type="number" v-model="lapTimeMinutes" placeholder="min" class="w-full m-0" />
         </label>
     </div>
 
@@ -96,11 +96,11 @@ function ResettaDati(){
 
     <div class="basis-1/3 mr-2">
         <label class="input input-bordered input-primary flex gap-2 items-center">
-            ss <input type="number"  v-model="lapTimeSeconds" placeholder="ss" class=" w-full m-0" />
+            sec <input type="number"  v-model="lapTimeSeconds" placeholder="sec" class=" w-full m-0" />
         </label>  
     </div>
 
-    <span class="mr-2 mt-2">:</span>
+    <span class="mr-2 mt-2">,</span>
 
     <div class="basis-1/3 ">
         <label class="input input-bordered input-primary flex gap-2 items-center">
@@ -116,7 +116,7 @@ function ResettaDati(){
       
     <div class="basis-1/2 w-full mr-2">
         <label class="input input-bordered  input-primary flex items-center gap-2">
-            h <input type="number" v-model="raceTimeHours" placeholder="hh" class="m-0 w-full" />
+            hr <input type="number" v-model="raceTimeHours" placeholder="hr" class="m-0 w-full" />
         </label>
     </div>
 
@@ -124,7 +124,7 @@ function ResettaDati(){
 
     <div class="basis-1/2 w-full">
         <label class="input input-bordered  input-primary flex items-center gap-2">
-            m <input type="number" v-model="raceTimeMinutes" placeholder="mm" class="m-0 w-full" />
+            min <input type="number" v-model="raceTimeMinutes" placeholder="min" class="m-0 w-full" />
         </label>
     </div>
     
@@ -134,7 +134,7 @@ function ResettaDati(){
 <span class="label label-text mt-5  md:w-2/5 mx-auto">Consumo carburante per giro</span>
     <div class="w-full md:w-2/5 mx-auto ">
     <label class="input input-bordered  input-primary flex items-center gap-2">
-        L <input v-model="consumoCarburante"  type="number" class="grow" placeholder="L"/>
+        L/g <input v-model="consumoCarburante"  type="number" class="grow" placeholder="Litri/giro"/>
         <!-- <kbd @click="addProductFromIcon(productInput)" class="kbd kbd-sm">Enter</kbd> -->
     </label>
     </div>
@@ -147,45 +147,44 @@ function ResettaDati(){
 
 
 
-    <div class="flex flex-row mx-auto md:w-2/5 w-full ">
+    <div class="flex  mx-auto justify-evenly content-center md:w-2/5 w-full ">
       
-      <div class="basis-1/3 mr-2 flex items-center ml-2 ">
-        <span class="label label-text md:w-2/5 ">Carburante minimo</span>
-        
-        <span class="label label-text md:w-3/5 ">
-            <label class="input input-bordered flex items-center gap-2">
-          
-                <span class="grow">
-                    L {{ iniettaCarburante }}
-                </span>
-         
-            </label>
-        </span>
-      </div>
-  
-      <div class="basis-1/3 mr-2 flex items-center">
-        <span class="label label-text md:w-2/5 ">Carburante sicuro</span>
-        
-        <span class="label label-text md:w-3/5 ">
-            <label class="input input-bordered flex items-center gap-2">
-          
-                <span class="grow">
-                    L {{ iniettaCarburanteSafe }}
-                </span>
-         
-            </label>
-        </span>
-      </div>
-  
-      <div class="basis-1/3 flex items-center">
-        <span class="label label-text md:w-2/5">Con giro lanciato</span>
+      <div class="">
+        <span class="label label-text md:w-2/5 pb-0">Carburante minimo</span>
         
         <span class="label label-text md:w-3/5">
             <label class="input input-bordered flex items-center gap-2">
           
-                <span class="grow">
+                    L {{ iniettaCarburante }}
+               
+         
+            </label>
+        </span>
+      </div>
+  
+      <div class="">
+        <span class="label label-text md:w-2/5 pb-0">Carburante sicuro</span>
+        
+        <span class="label label-text md:w-3/5 ">
+            <label class="input input-bordered flex items-center gap-2">
+          
+              
+                    L {{ iniettaCarburanteSafe }}
+                
+         
+            </label>
+        </span>
+      </div>
+  
+      <div class="">
+        <span class="label label-text md:w-2/5 pb-0">Con giro formazione</span>
+        
+        <span class="label label-text md:w-3/5">
+            <label class="input input-bordered flex items-center gap-2">
+          
+                
                     L {{ iniettaCarburanteLapPlus }}
-                </span>
+                
          
             </label>
         </span>

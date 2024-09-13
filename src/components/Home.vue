@@ -19,7 +19,7 @@ const emit = defineEmits(['changeTab']);
     <div>
       <h1 class="text-5xl font-bold">SimFuel</h1>
       <p class="py-6">
-        Questa è un'app che ti permette di imbarcare il quantitativo giusto di benzina nel serbatoio, in base alle tue esigenze!
+        Questa è un'app che ti permette di imbarcare il quantitativo giusto di carburante nel serbatoio, in base alle tue esigenze!
       </p>
       <!-- qui richiamo la funzione da passare al componente padre e il valore che cambia -->
       <button class="btn btn-secondary" @click="emit('changeTab', 2);">Accedi al calcolatore</button>
